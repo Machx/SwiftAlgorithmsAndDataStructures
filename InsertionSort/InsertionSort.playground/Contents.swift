@@ -1,29 +1,30 @@
 //: Playground - noun: a place where people can play
 
 import Cocoa
+import XCTest
 
-extension Array where Element: Comparable {
-	func insertionSort() -> [Element] {
-		var result = self
+class InsertionSortTestCase : XCTestCase {
+	override func setUp() {
+		super.setUp()
+	}
+	
+	override func tearDown() {
+		super.tearDown()
+	}
+	
+	func testBasicInsertionSort() {
+		let numbers = [3,1,9,4,2,6]
+		let numbers2 = numbers.insertionSort()
 		
-		guard result.count != 1 else { return result }
-		
-		for i in 1..<result.count {
-			var position = i
-			let tempValue = result[i]
-			
-			
-			while (position > 0) && (result[position - 1] > tempValue) {
-				result[position] = result[position - 1]
-				position = position - 1
-			}
-			
-			result[position] = tempValue
-		}
-		
-		return result
+		XCTAssertEqual(numbers2, [1,2,3,4,6,9])
+	}
+	
+	func testCaseWith1Value() {
+		let number = [3]
+		let number2 = number.insertionSort()
+
+		XCTAssertEqual(number2, [3])
 	}
 }
 
-let numbers = [3,1,9,4,2,6]
-let numbers2 = numbers.insertionSort()
+InsertionSortTestCase.defaultTestSuite.run()
