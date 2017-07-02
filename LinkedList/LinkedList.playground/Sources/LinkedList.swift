@@ -53,4 +53,27 @@ public final class LinkedList<T: Comparable> {
 		
 		return false
 	}
+	
+	@discardableResult
+	public func remove(_ value: T) -> Bool {
+		guard let currentNode = self.head else { return false }
+		
+		if currentNode.value == value {
+			self.head = self.head?.next
+			return true
+		} else {
+			var node = self.head?.next
+			var previousNode = self.head
+			while node != nil {
+				if node?.value == value {
+					previousNode?.next = node?.next
+					return true
+				}
+				previousNode = node
+				node = node?.next
+			}
+		}
+		
+		return false
+	}
 }
