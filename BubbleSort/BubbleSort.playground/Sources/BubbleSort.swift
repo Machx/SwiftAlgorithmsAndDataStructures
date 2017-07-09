@@ -26,37 +26,24 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
-import XCTest
+import Foundation
 
-class StackTestCase : XCTestCase {
-	override func setUp() {
-		super.setUp()
-	}
-	
-	override func tearDown() {
-		super.tearDown()
-	}
-	
-	func testStack() {
-		var stack = Stack<Int>()
+extension Array where Element : Comparable {
+	public mutating func bubbleSort() {
+		var unsortedMaxIndex = self.count - 2
+		var sorted = false
 		
-		stack.push(1)
-		stack.push(2)
-		stack.push(3)
-		
-		XCTAssertEqual(stack.peek(), 3)
-		XCTAssertEqual(stack.pop(), 3)
-		
-		XCTAssertEqual(stack.peek(), 2)
-		XCTAssertEqual(stack.pop(), 2)
-		
-		XCTAssertEqual(stack.peek(), 1)
-		XCTAssertEqual(stack.pop(), 1)
-		
-		XCTAssertNil(stack.peek())
-		XCTAssertNil(stack.pop())
+		while sorted == false {
+			sorted = true
+			var currentIndex = 0
+			while currentIndex <= unsortedMaxIndex {
+				if self[currentIndex] > self[currentIndex + 1] {
+					sorted = false
+					self.swapAt(currentIndex, currentIndex + 1)
+				}
+				currentIndex += 1
+			}
+			unsortedMaxIndex -= 1
+		}
 	}
 }
-
-StackTestCase.defaultTestSuite.run()
