@@ -32,7 +32,7 @@ extension Array where Element: Comparable {
 	public func insertionSort() -> [Element] {
 		var result = self
 		
-		guard result.count != 1 else { return result }
+		guard result.count > 1 else { return result }
 		
 		for i in 1..<result.count {
 			var position = i
