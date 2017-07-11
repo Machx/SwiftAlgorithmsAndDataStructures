@@ -51,6 +51,11 @@ class InsertionSortTestCase : XCTestCase {
 
 		XCTAssertEqual(number2, [3])
 	}
+	
+	func testEmptyArray() {
+		let numbers: [Int] = []
+		XCTAssertEqual([], numbers.insertionSort())
+	}
 }
 
 InsertionSortTestCase.defaultTestSuite.run()
