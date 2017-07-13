@@ -105,3 +105,18 @@ public final class LinkedList<T: Comparable> {
 		return false
 	}
 }
+
+extension LinkedList: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		guard self.head != nil else { return "[ ]" }
+		var result = "[ "
+		var currentNode = self.head
+		result.append(String(describing: currentNode!.value) + " ")
+		while currentNode?.next != nil {
+			currentNode = currentNode?.next!
+			result.append(String(describing: currentNode!.value) + " ")
+		}
+		result.append("]")
+		return result
+	}
+}
