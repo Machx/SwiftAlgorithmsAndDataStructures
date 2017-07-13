@@ -27,7 +27,23 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 import Cocoa
+import XCTest
 
-let a = [3,2, 9 , 4, 6, 11, 1]
-var b = a
-b.bubbleSort()
+class BubbleSortTestCase : XCTestCase {
+	override func setUp() {
+		super.setUp()
+	}
+	
+	override func tearDown() {
+		super.tearDown()
+	}
+	
+	func testBasicBubbleSort() {
+		var a = [3,2, 9 , 4, 6, 11, 1]
+		a.bubbleSort()
+		
+		XCTAssertEqual(a, [1,2,3,4,6,9,11])
+	}
+}
+
+BubbleSortTestCase.defaultTestSuite.run()
