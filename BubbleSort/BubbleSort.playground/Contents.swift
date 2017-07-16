@@ -39,7 +39,7 @@ class BubbleSortTestCase : XCTestCase {
 	}
 	
 	func testBasicBubbleSort() {
-		var a = [3,2, 9 , 4, 6, 11, 1]
+		var a = [3, 2, 9, 4, 6, 11, 1]
 		a.bubbleSort()
 		
 		XCTAssertEqual(a, [1,2,3,4,6,9,11])
